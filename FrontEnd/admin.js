@@ -110,6 +110,15 @@ function createNewWorkModal() {
 
         const modalDeux = document.querySelector(".modal-ajout")
 
+        let divModalHeaders = document.createElement("div")
+        divModalHeaders.setAttribute("class", "modal-headers")
+
+        let iconsModalHeaders = document.createElement('i')
+        iconsModalHeaders.setAttribute("class", "fa-solid fa-arrow-left fa-lg")
+
+        let marksModalHeaders = document.createElement('i')
+        marksModalHeaders.setAttribute("class", "fa-solid fa-xmark fa-lg")
+
         let buttonAdd = document.createElement("button")
         buttonAdd.textContent = "Valider"
 
@@ -155,7 +164,7 @@ function createNewWorkModal() {
         labelSelect.textContent = "Catégorie"
         labelSelect.setAttribute("class", "label-select")
 
-
+        modalDeux.appendChild(divModalHeaders)
         modalDeux.appendChild(newH3)
         modalDeux.appendChild(formModal)
         modalDeux.appendChild(labelInputTxt)
@@ -173,6 +182,9 @@ function createNewWorkModal() {
         formModal.append(inputFile)
         formModal.append(labelFile)
         formModal.append(pFile)
+
+        divModalHeaders.appendChild(iconsModalHeaders)
+        divModalHeaders.appendChild(marksModalHeaders)
     })
 }
 

@@ -597,6 +597,7 @@ a:hover {
   height: 36px;
   border-radius: 60px;
   font-family: Syne;
+  margin-bottom: 55px;
 }
 
 .modal-ajout h3 {
@@ -621,4 +622,11 @@ input[type="file"] {
   justify-content: flex-end;
   padding-right: 35px;
   padding-bottom: 25px;
+}
+
+.modal-headers {
+  display: flex;
+  width: 120%;
+  padding-bottom: 30px;
+  justify-content: space-between;
 }
