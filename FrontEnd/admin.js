@@ -1,11 +1,11 @@
-
-
 let modal = null;
 
 const openModal = function (e) {
     e.preventDefault();
+    const modalAjout = document.querySelector("#modal1 > div > div.modal-ajout.js-modal-stop")
     const target = document.querySelector(e.target.getAttribute("href"));
     target.style.display = null;
+    modalAjout.style.display = "none"
     modal = target;
     modal.addEventListener("click", closeModal);
     modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
@@ -36,8 +36,6 @@ const stopPropagation = function (e) {
 document.querySelectorAll(".js-modal").forEach((a) => {
     a.addEventListener("click", openModal);
 });
-
-
 
 function displayWorksModal(works) {
     const galleryModal = document.querySelector(".modal-gallery")
@@ -99,16 +97,19 @@ function createWorkModaleDOM(work) {
 
 function createNewWorkModal() {
 
-    const btnAjout = document.querySelector("#modal1 > div > div.modal-21 > div.modal-content > input")
+    const btnAjout = document.querySelector("#modal1 > div > div:nth-child(1) > div > div.modal-content > input")
 
     btnAjout.addEventListener("click", function () {
-        const modalDisplayNone = document.querySelector("#modal1 > div > div.modal-21 > div.modal-content")
-        const modalHeaderDisplayNone = document.querySelector("#modal1 > div > div.modal-21 > div.modal-header")
 
+        const modalbackgroundNone = document.querySelector("#modal1 > div > div.modal-2")
+        const modalDisplayNone = document.querySelector("#modal1 > div > div:nth-child(1) > div > div.modal-content")
+        const modalHeaderDisplayNone = document.querySelector("#modal1 > div > div:nth-child(1) > div > div.modal-header")
+        const modalDeux = document.querySelector(".modal-ajout")
+
+        modalbackgroundNone.style.display = 'none'
         modalDisplayNone.style.display = "none"
         modalHeaderDisplayNone.style.display = "none"
-
-        const modalDeux = document.querySelector(".modal-ajout")
+        modalDeux.style.display = ""
 
         let divModalHeaders = document.createElement("div")
         divModalHeaders.setAttribute("class", "modal-headers")
@@ -117,7 +118,7 @@ function createNewWorkModal() {
         iconsModalHeaders.setAttribute("class", "fa-solid fa-arrow-left fa-lg")
 
         let marksModalHeaders = document.createElement('i')
-        marksModalHeaders.setAttribute("class", "fa-solid fa-xmark fa-lg")
+        marksModalHeaders.setAttribute("class", "fa-solid fa-xmark fa-lg js-modal-close-ajout")
 
         let buttonAdd = document.createElement("button")
         buttonAdd.textContent = "Valider"
@@ -185,9 +186,26 @@ function createNewWorkModal() {
 
         divModalHeaders.appendChild(iconsModalHeaders)
         divModalHeaders.appendChild(marksModalHeaders)
-    })
-}
 
+        function closeModalAjout() {
+            marksModalHeaders.addEventListener("click", closeModal)
+        }
+
+        function testReturn() {
+            iconsModalHeaders.addEventListener("click", function () {
+                const selectModalContentAjout = document.querySelector("#modal1 > div")
+                const backModalContent = document.querySelector("#modal1 > div > div.modal-21")
+
+                selectModalContentAjout.style.display = "none"
+                backModalContent.style.display = 'block'
+            })
+        }
+        testReturn()
+        closeModalAjout()
+
+    })
+
+}
 
 async function main2() {
     const works = await fetchWorks();
@@ -196,7 +214,7 @@ async function main2() {
     handleCategoryFilter(works);
     displayWorksModal(works)
     createNewWorkModal()
-}
 
+}
 
 main2()

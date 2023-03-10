@@ -522,6 +522,12 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 630px;
+  height: 670px;
+  border-radius: 10px;
+  background-color: white;
+  padding: 30px;
 }
 
 .modal-ajout form {
@@ -575,18 +581,20 @@ a:hover {
   margin-top: 21px;
   margin-bottom: 10px;
   font-family: Work Sans;
-  width: 100%;
+  width: 73%;
   display: flex;
   justify-content: flex-start;
+  font-weight: bold;
 }
 
 .label-titre {
   margin-top: 30px;
   margin-bottom: 10px;
   font-family: Work Sans;
-  width: 100%;
+  width: 74%;
   display: flex;
   justify-content: flex-start;
+  font-weight: bold;
 }
 
 .modal-ajout button {
@@ -597,7 +605,6 @@ a:hover {
   height: 36px;
   border-radius: 60px;
   font-family: Syne;
-  margin-bottom: 55px;
 }
 
 .modal-ajout h3 {
@@ -626,7 +633,7 @@ input[type="file"] {
 
 .modal-headers {
   display: flex;
-  width: 120%;
-  padding-bottom: 30px;
+  width: 90%;
   justify-content: space-between;
+  padding-bottom: 25px;
 }

@@ -82,14 +82,6 @@ function handleCategoryFilter(works) {
   });
 }
 
-// partie Modale 
-
-
-
-
-
-// Fin partie Modale
-
 async function main() {
   const works = await fetchWorks();
   displayWorks(works);
