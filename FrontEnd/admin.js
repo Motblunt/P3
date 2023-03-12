@@ -191,20 +191,34 @@ function createNewWorkModal() {
             marksModalHeaders.addEventListener("click", closeModal)
         }
 
-        function testReturn() {
-            iconsModalHeaders.addEventListener("click", function () {
-                const selectModalContentAjout = document.querySelector("#modal1 > div")
-                const backModalContent = document.querySelector("#modal1 > div > div.modal-21")
+        // function testReturn() {
+        //     iconsModalHeaders.addEventListener("click", function () {
+        //         const selectModalContentAjout = document.querySelector("#modal1 > div")
+        //         const backModalContent = document.querySelector("#modal1 > div > div.modal-21")
 
-                selectModalContentAjout.style.display = "none"
-                backModalContent.style.display = 'block'
+        //         selectModalContentAjout.style.display = "none"
+        //         backModalContent.style.display = 'block'
+        //     })
+        // }
+        // testReturn()
+        // closeModalAjout()
+
+
+
+        function backModal() {
+            const iconsReturn = document.querySelector("#modal1 > div > div.modal-ajout.js-modal-stop.js-modal-close > div > i.fa-solid.fa-arrow-left.fa-lg")
+
+            iconsReturn.addEventListener("click", function () {
+                modalbackgroundNone.style.display = ""
+                modalDisplayNone.style.display = ""
+                modalHeaderDisplayNone.style.display = ""
+                modalDeux.style.display = "none"
             })
+
         }
-        testReturn()
-        closeModalAjout()
+        backModal()
 
     })
-
 }
 
 async function main2() {
