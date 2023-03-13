@@ -20,7 +20,9 @@
 		<input class="submit-modal" type="submit" value="publier les changements" id="">
 	</div>
 
-	<aside id="modal1" class="modal js-modal-stop" style="display:none">
+	<!-- Modale Partie Galery -->
+
+	<div id="modal1" class="modal js-modal-stop modal-un" style="display:none">
 		<div class="js-modal-stop">
 			<div class="modal-2">
 				<div class="modal-21 ">
@@ -37,12 +39,38 @@
 					</div>
 				</div>
 			</div>
-
-			<div class="modal-ajout js-modal-stop js-modal-close"></div>
 		</div>
+	</div>
+
+	<!-- Modale Partie Ajout -->
+	<div class="modal" style="display:none">
+		<div id="modal2" class="modal-ajout js-modal-close js-modal-stop">
+			<div class="modal-headers">
+				<i class="fa-solid fa-arrow-left fa-lg"></i>
+				<i class="fa-solid fa-xmark fa-lg js-modal-close-ajout"></i>
+			</div>
+			<div class="modal-content">
+				<h3>Ajout photo</h3>
+				<form action="">
+					<input type="file" id="file">
+					<label for="file" class="label-file">+ Ajouter photo</label>
+					<p>jpg, png : 4mo max</p>
+				</form>
+				<label class="label-titre" for="">Titre</label>
+				<input type="text">
+				<label class="label-select" for="">Catégories</label>
+				<select class="optionsFiltre" name="Select Catégories" id="">
+					<option value="">Objets</option>
+					<option value="">Appartement</option>
+					<option value="">Hôtels & restaurants</option>
+				</select>
+				<hr width="420px">
+				<button>Valider</button>
+			</div>
+		</div>
+	</div>
 
 
-	</aside>
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 		<nav>

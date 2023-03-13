@@ -2,16 +2,15 @@ let modal = null;
 
 const openModal = function (e) {
     e.preventDefault();
-    const modalAjout = document.querySelector("#modal1 > div > div.modal-ajout.js-modal-stop")
     const target = document.querySelector(e.target.getAttribute("href"));
     target.style.display = null;
-    modalAjout.style.display = "none"
     modal = target;
     modal.addEventListener("click", closeModal);
     modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
     modal
         .querySelector(".js-modal-stop")
         .addEventListener("click", stopPropagation);
+
 };
 
 const closeModal = function (e) {
@@ -27,7 +26,7 @@ const closeModal = function (e) {
         .removeEventListener("click", stopPropagation);
 
     modal = null;
-};
+}
 
 const stopPropagation = function (e) {
     e.stopPropagation();
@@ -36,6 +35,41 @@ const stopPropagation = function (e) {
 document.querySelectorAll(".js-modal").forEach((a) => {
     a.addEventListener("click", openModal);
 });
+
+// Ouverture de la modal Ajout suite au click du bouton Ajouter une photo
+const modalGallery = document.querySelector(".modal-un")
+const modalAjout = document.querySelector("body > div:nth-child(3)")
+const btnSelectorAddPhoto = document.querySelector(".input-base")
+
+function openModalAjout() {
+    btnSelectorAddPhoto.addEventListener("click", function () {
+        modalGallery.style.display = "none"
+        modalAjout.style.display = ""
+    })
+}
+
+// Fonction Retour dans la Modal précédente
+
+const iconsReturn = document.querySelector("#modal2 > div.modal-headers > i.fa-solid.fa-arrow-left.fa-lg")
+
+function retourModalPrecedente() {
+    iconsReturn.addEventListener("click", function () {
+        modalGallery.style.display = ""
+        modalAjout.style.display = "none"
+    })
+}
+
+// Fermeture de la Modal Ajout
+
+const iconClose = document.querySelector("#modal2 > div.modal-headers > i.fa-solid.fa-xmark.fa-lg.js-modal-close-ajout")
+const overlayModal = document.querySelector("body")
+
+function closeModalAjout() {
+    iconClose.addEventListener("click", function () {
+        modalAjout.style.display = "none"
+    })
+}
+
 
 function displayWorksModal(works) {
     const galleryModal = document.querySelector(".modal-gallery")
@@ -48,7 +82,6 @@ function displayWorksModal(works) {
         galleryModal.appendChild(workModaleDOM);
     }
 }
-
 
 function createWorkModaleDOM(work) {
 
@@ -93,142 +126,16 @@ function createWorkModaleDOM(work) {
 
 }
 
-// #####
-
-function createNewWorkModal() {
-
-    const btnAjout = document.querySelector("#modal1 > div > div:nth-child(1) > div > div.modal-content > input")
-
-    btnAjout.addEventListener("click", function () {
-
-        const modalbackgroundNone = document.querySelector("#modal1 > div > div.modal-2")
-        const modalDisplayNone = document.querySelector("#modal1 > div > div:nth-child(1) > div > div.modal-content")
-        const modalHeaderDisplayNone = document.querySelector("#modal1 > div > div:nth-child(1) > div > div.modal-header")
-        const modalDeux = document.querySelector(".modal-ajout")
-
-        modalbackgroundNone.style.display = 'none'
-        modalDisplayNone.style.display = "none"
-        modalHeaderDisplayNone.style.display = "none"
-        modalDeux.style.display = ""
-
-        let divModalHeaders = document.createElement("div")
-        divModalHeaders.setAttribute("class", "modal-headers")
-
-        let iconsModalHeaders = document.createElement('i')
-        iconsModalHeaders.setAttribute("class", "fa-solid fa-arrow-left fa-lg")
-
-        let marksModalHeaders = document.createElement('i')
-        marksModalHeaders.setAttribute("class", "fa-solid fa-xmark fa-lg js-modal-close-ajout")
-
-        let buttonAdd = document.createElement("button")
-        buttonAdd.textContent = "Valider"
-
-        let formModal = document.createElement("form")
-
-        let newH3 = document.createElement("h3")
-        newH3.textContent = "Ajout photo"
-
-        let inputFile = document.createElement("input")
-        inputFile.setAttribute("type", "file")
-        inputFile.setAttribute("id", "file")
-
-        let labelFile = document.createElement('label')
-        labelFile.setAttribute("class", "label-file")
-        labelFile.setAttribute("for", "file")
-        labelFile.textContent = "+ Ajouter photo"
-
-        let pFile = document.createElement("p")
-        pFile.textContent = "jpg, png : 4mo max"
-
-        let labelInputTxt = document.createElement("label")
-        labelInputTxt.textContent = "Titre"
-        labelInputTxt.setAttribute("class", "label-titre")
-
-        let inputsTxt = document.createElement("input")
-        inputsTxt.setAttribute("type", "text")
-
-        let inputsTxts = document.createElement("select")
-        inputsTxts.setAttribute('class', "optionsFiltre")
-
-        let optionsSelect = document.createElement('option')
-        optionsSelect.textContent = "Objets"
-
-        let optionsSelectDeux = document.createElement('option')
-        optionsSelectDeux.textContent = "Appartements"
-
-        let optionsSelectTrois = document.createElement('option')
-        optionsSelectTrois.textContent = "Hôtels & restaurants"
-
-        let newHr = document.createElement("hr")
-
-        let labelSelect = document.createElement("label")
-        labelSelect.textContent = "Catégorie"
-        labelSelect.setAttribute("class", "label-select")
-
-        modalDeux.appendChild(divModalHeaders)
-        modalDeux.appendChild(newH3)
-        modalDeux.appendChild(formModal)
-        modalDeux.appendChild(labelInputTxt)
-        modalDeux.appendChild(inputsTxt)
-        modalDeux.appendChild(labelSelect)
-        modalDeux.appendChild(inputsTxts)
-        modalDeux.appendChild(newHr)
-
-        inputsTxts.appendChild(optionsSelect)
-        inputsTxts.appendChild(optionsSelectDeux)
-        inputsTxts.appendChild(optionsSelectTrois)
-
-        modalDeux.appendChild(buttonAdd)
-
-        formModal.append(inputFile)
-        formModal.append(labelFile)
-        formModal.append(pFile)
-
-        divModalHeaders.appendChild(iconsModalHeaders)
-        divModalHeaders.appendChild(marksModalHeaders)
-
-        function closeModalAjout() {
-            marksModalHeaders.addEventListener("click", closeModal)
-        }
-
-        // function testReturn() {
-        //     iconsModalHeaders.addEventListener("click", function () {
-        //         const selectModalContentAjout = document.querySelector("#modal1 > div")
-        //         const backModalContent = document.querySelector("#modal1 > div > div.modal-21")
-
-        //         selectModalContentAjout.style.display = "none"
-        //         backModalContent.style.display = 'block'
-        //     })
-        // }
-        // testReturn()
-        // closeModalAjout()
-
-
-
-        function backModal() {
-            const iconsReturn = document.querySelector("#modal1 > div > div.modal-ajout.js-modal-stop.js-modal-close > div > i.fa-solid.fa-arrow-left.fa-lg")
-
-            iconsReturn.addEventListener("click", function () {
-                modalbackgroundNone.style.display = ""
-                modalDisplayNone.style.display = ""
-                modalHeaderDisplayNone.style.display = ""
-                modalDeux.style.display = "none"
-            })
-
-        }
-        backModal()
-
-    })
-}
 
 async function main2() {
     const works = await fetchWorks();
     displayWorks(works);
     createCategorieButtons(works);
     handleCategoryFilter(works);
-    displayWorksModal(works)
-    createNewWorkModal()
-
+    displayWorksModal(works);
+    openModalAjout()
+    retourModalPrecedente()
+    closeModalAjout()
 }
 
 main2()
