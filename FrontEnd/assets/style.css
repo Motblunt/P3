@@ -154,7 +154,7 @@ header {
 }
 
 section {
-  margin: 50px 0;
+  margin: 100px 0;
 }
 
 h1 {
@@ -320,7 +320,7 @@ button:hover {
   color: white;
 }
 
-h2 {
+.log-wrapper {
   display: flex;
   justify-content: center;
   /* padding-top: 160px; */
@@ -530,7 +530,7 @@ a:hover {
   padding: 30px;
 }
 
-.modal-ajout form {
+.formulaire-modal {
   width: 420px;
   height: 169px;
   background-color: #e8f1f6;
@@ -636,4 +636,10 @@ input[type="file"] {
   width: 90%;
   justify-content: space-between;
   padding-bottom: 25px;
+}
+
+#img-preview {
+  max-width: 130px;
+  max-height: 169px;
+  position: absolute;
 }

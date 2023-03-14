@@ -37,6 +37,7 @@ document.querySelectorAll(".js-modal").forEach((a) => {
 });
 
 // Ouverture de la modal Ajout suite au click du bouton Ajouter une photo
+
 const modalGallery = document.querySelector(".modal-un")
 const modalAjout = document.querySelector("body > div:nth-child(3)")
 const btnSelectorAddPhoto = document.querySelector(".input-base")
@@ -59,7 +60,7 @@ function retourModalPrecedente() {
     })
 }
 
-// Fermeture de la Modal Ajout
+// Fermeture de la Modal Ajout.
 
 const iconClose = document.querySelector("#modal2 > div.modal-headers > i.fa-solid.fa-xmark.fa-lg.js-modal-close-ajout")
 const overlayModal = document.querySelector("body")
@@ -70,6 +71,77 @@ function closeModalAjout() {
     })
 }
 
+// Recupération des données saisie par l'utilisateur ( File, Titre et Catégorie ).
+
+document.querySelector("#validate-btn").addEventListener("click", function () {
+
+    const titleId = document.querySelector("#titre-id").value
+    const imageId = document.querySelector("#file-id").files[0]
+    const categorieId = document.querySelector("#categorie-id").value
+    const numberId = parseInt(categorieId[0])
+    const categoryName = categorieId[1]
+
+    const formData = new FormData()
+
+    formData.append("image", imageId)
+    formData.append("title", titleId)
+    formData.append("category", numberId)
+
+    console.log(formData);
+
+    // Appel HTTP avec méthode POST.
+
+    fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${window.sessionStorage.token}`,
+            Content: 'multipart/form-data',
+        },
+        body: formData,
+
+    })
+        .then(function (response) {
+            if (response.ok) {
+                alert("Nouveau Projet envoyé avec succès !")
+                displayWorksModal(works)
+                displayWorks(works)
+            } else {
+                alert("Erreur")
+            }
+        })
+})
+
+// Preview de l'image que l'on upload via l'input file.
+
+const fileUploadInput = document.querySelector("#file-id")
+const labelUploadInput = document.querySelector("#modal2 > div.modal-content > form > label")
+const pUploadInput = document.querySelector("#modal2 > div.modal-content > form > p")
+
+fileUploadInput.addEventListener("change", previewFile)
+
+function previewFile() {
+    if (this.files.length === 0) {
+
+        return
+    }
+
+    const file = this.files[0]
+
+    const fileReader = new FileReader()
+
+    fileReader.readAsDataURL(file)
+
+    fileReader.addEventListener("load", (event) => displayImage(event, file))
+
+}
+
+function displayImage(event, file) {
+    const imgElement = document.querySelector("#img-preview")
+    imgElement.src = event.target.result
+    labelUploadInput.style.display = "none"
+    pUploadInput.style.display = "none"
+}
 
 function displayWorksModal(works) {
     const galleryModal = document.querySelector(".modal-gallery")
@@ -125,7 +197,6 @@ function createWorkModaleDOM(work) {
     return divModal
 
 }
-
 
 async function main2() {
     const works = await fetchWorks();
