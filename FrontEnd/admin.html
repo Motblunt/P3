@@ -17,7 +17,7 @@
 	<div class="modal-wrapper">
 		<i class="fa-solid fa-pen-to-square fa-xl"></i>
 		<p>Mode édition</p>
-		<input class="submit-modal" type="submit" value="publier les changements" id="">
+		<input class="submit-modal" type="submit" value="publier les changements">
 	</div>
 
 	<!-- Modale Partie Galery -->
@@ -58,6 +58,7 @@
 						<label for="file-id" class="label-file">+ Ajouter photo</label>
 						<p>jpg, png : 4mo max</p>
 					</form>
+					<p id="error"></p>
 					<label class="label-titre" for="titre-id">Titre</label>
 					<input type="text" name="titre-id" id="titre-id">
 					<label class="label-select" for="Select-Categories">Catégories</label>
@@ -97,7 +98,11 @@
 				</div>
 
 			</figure>
-			<article class="padding-article">
+			<article>
+				<div class="btn-modif-article">
+					<i class="fa-solid fa-pen-to-square fa-xf"></i>
+					<a class="txt-decoration-none js-modal" href="#modal1">modifier</a>
+				</div>
 				<h2>Designer d'espace</h2>
 				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
 					finale du chantier.</p>

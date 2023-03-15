@@ -89,7 +89,7 @@ document.querySelector("#validate-btn").addEventListener("click", function () {
 
     console.log(formData);
 
-    // Appel HTTP avec méthode POST.
+    // Appel HTTP avec méthode POST.    
 
     fetch("http://localhost:5678/api/works", {
         method: "POST",
@@ -107,7 +107,7 @@ document.querySelector("#validate-btn").addEventListener("click", function () {
                 displayWorksModal(works)
                 displayWorks(works)
             } else {
-                alert("Erreur")
+                alert("Veuillez renseigner un titre ainsi qu'une catégorie!")
             }
         })
 })

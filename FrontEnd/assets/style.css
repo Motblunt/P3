@@ -323,7 +323,6 @@ button:hover {
 .log-wrapper {
   display: flex;
   justify-content: center;
-  /* padding-top: 160px; */
   padding-bottom: 37px;
 }
 
@@ -333,7 +332,6 @@ button:hover {
   align-items: center;
   flex-direction: column;
   font-family: Work Sans;
-  font-weight: 500px;
 }
 
 .input-un {
@@ -432,12 +430,14 @@ a:hover {
   font-family: Work Sans;
   text-decoration: none;
   color: black;
+  font-weight: bold;
 }
 
 .txt-decoration-none {
   text-decoration: none;
   color: black;
   margin: 5px;
+  font-weight: bold;
 }
 
 .modif-projet {
@@ -477,7 +477,6 @@ a:hover {
 }
 
 .color-red {
-  font-style: none;
   color: #d65353;
   text-decoration: none;
 }
@@ -639,7 +638,16 @@ input[type="file"] {
 }
 
 #img-preview {
-  max-width: 130px;
-  max-height: 169px;
+  width: 130px;
+  height: 169px;
   position: absolute;
+  object-fit: cover;
+}
+
+.btn-modif-article {
+  font-family: Work Sans;
+  text-decoration: none;
+  color: black;
+  padding-bottom: 15px;
+  font-weight: bold;
 }
