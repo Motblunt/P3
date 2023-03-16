@@ -484,9 +484,11 @@ a:hover {
 .modal-gallery {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   padding-inline: 100px;
-  row-gap: 28px;
+  row-gap: 30px;
+  column-gap: 9px;
   padding-top: 45px;
   padding-bottom: 65px;
 }
@@ -510,10 +512,13 @@ a:hover {
   right: 5px;
   bottom: 83px;
   color: white;
+  border: none;
   position: absolute;
   background-color: black;
-  width: 17px;
-  height: 17px;
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  cursor: pointer;
   border-radius: 2px;
 }
 
@@ -554,6 +559,9 @@ a:hover {
   height: 36px;
   color: #306685;
   font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .modal-ajout input {
@@ -594,6 +602,10 @@ a:hover {
   display: flex;
   justify-content: flex-start;
   font-weight: bold;
+}
+.btn-hover:hover {
+  background-color: #1d6154;
+  cursor: pointer;
 }
 
 .modal-ajout button {
@@ -638,10 +650,8 @@ input[type="file"] {
 }
 
 #img-preview {
-  width: 130px;
-  height: 169px;
-  position: absolute;
-  object-fit: cover;
+  width: 58px;
+  height: 46px;
 }
 
 .btn-modif-article {
@@ -650,4 +660,8 @@ input[type="file"] {
   color: black;
   padding-bottom: 15px;
   font-weight: bold;
+}
+
+.fa-solid {
+  cursor: pointer;
 }

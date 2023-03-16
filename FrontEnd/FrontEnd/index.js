@@ -21,6 +21,7 @@ function displayWorks(works) {
 
 function createWorkDOM(work) {
   const figure = document.createElement("figure");
+  figure.setAttribute('data-work-id', work.id)
   const img = document.createElement("img");
   const figcaption = document.createElement("figcaption");
 

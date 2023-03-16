@@ -10,7 +10,6 @@ const openModal = function (e) {
     modal
         .querySelector(".js-modal-stop")
         .addEventListener("click", stopPropagation);
-
 };
 
 const closeModal = function (e) {
@@ -87,8 +86,6 @@ document.querySelector("#validate-btn").addEventListener("click", function () {
     formData.append("title", titleId)
     formData.append("category", numberId)
 
-    console.log(formData);
-
     // Appel HTTP avec méthode POST.    
 
     fetch("http://localhost:5678/api/works", {
@@ -104,10 +101,9 @@ document.querySelector("#validate-btn").addEventListener("click", function () {
         .then(function (response) {
             if (response.ok) {
                 alert("Nouveau Projet envoyé avec succès !")
-                displayWorksModal(works)
-                displayWorks(works)
+
             } else {
-                alert("Veuillez renseigner un titre ainsi qu'une catégorie!")
+                alert("Veuillez renseigner tous les champs!")
             }
         })
 })
@@ -139,6 +135,9 @@ function previewFile() {
 function displayImage(event, file) {
     const imgElement = document.querySelector("#img-preview")
     imgElement.src = event.target.result
+    imgElement.style.height = "169px"
+    imgElement.style.width = "139px"
+    imgElement.style.objectFit = "cover"
     labelUploadInput.style.display = "none"
     pUploadInput.style.display = "none"
 }
@@ -176,9 +175,7 @@ function createWorkModaleDOM(work) {
             .then(response => {
                 if (response.ok) {
                     alert("Projet supprimé avec succès !");
-                    displayWorksModal(work);
-                    createWorkModaleDOM()
-
+                    refreshAfterDelete(work.id)
                 }
             })
     })
@@ -189,6 +186,7 @@ function createWorkModaleDOM(work) {
 
     divModal.appendChild(figureModal)
     divModal.setAttribute('id', work.title)
+    divModal.setAttribute('data-work-id', work.id)
 
     figureModal.appendChild(imgModal);
     figureModal.appendChild(figcaptionModal);
@@ -198,11 +196,20 @@ function createWorkModaleDOM(work) {
 
 }
 
+function refreshAfterDelete(workId) {
+
+    const deletedWorks = document.querySelectorAll(`[data-work-id="${workId}"]`)
+
+    deletedWorks.forEach(dl => dl.remove())
+
+}
+
 async function main2() {
     const works = await fetchWorks();
     displayWorks(works);
     createCategorieButtons(works);
     handleCategoryFilter(works);
+
     displayWorksModal(works);
     openModalAjout()
     retourModalPrecedente()
