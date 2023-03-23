@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Sophie Bluel - Architecte d'intérieur</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+		rel="stylesheet">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="./assets/style.css">
+	<script src="https://kit.fontawesome.com/44faa0fdc8.js" crossorigin="anonymous"></script>
+
+<body>
+	<div class="modal-wrapper">
+		<i class="fa-solid fa-pen-to-square fa-xl"></i>
+		<p>Mode édition</p>
+		<input class="submit-modal" type="submit" value="publier les changements">
+	</div>
+
+	<!-- Modale Partie Gallery -->
+
+	<div id="modal1" class="modal modalGallery" style="display:none">
+		<div class="js-modal-stop">
+			<div class="modal-gallery-wrapper">
+				<div class="modal-gallery-content">
+					<div class="modal-header">
+						<i class="fa-solid fa-xmark fa-lg js-modal-close"></i>
+					</div>
+					<div class="modal-content">
+						<h3>Galerie Photo</h3>
+						<div class="modal-works js-modal-stop"></div>
+
+						<hr width="420px">
+						<input class="input-base" type="submit" value="Ajouter une photo">
+						<a id="deletePost" class="color-red" href="#">Supprimer la galerie</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modale Partie Ajout -->
+	
+	<div class="modal" style="display:none">
+		<div id="modalAjout" class="modal-ajout-wrapper js-modal-ajout-stop">
+			<div class="modal-headers">
+				<i class="fa-solid fa-arrow-left fa-lg"></i>
+				<i class="fa-solid fa-xmark fa-lg js-modal-close-ajout"></i>
+			</div>
+			<div class="modal-content">
+				<h3>Ajout photo</h3>
+				<form action="submit" class="formulaire-modal">
+					<form action="submit">
+						<img src="./assets/images/Group.svg" alt="" id="img-preview">
+						<input type="file" id="file-id">
+						<label for="file-id" class="label-file">+ Ajouter photo</label>
+						<p>jpg, png : 4mo max</p>
+					</form>
+					<p id="error"></p>
+					<label class="label-titre" for="titre-id">Titre</label>
+					<input type="text" name="titre-id" id="titre-id">
+					<label class="label-select" for="Select-Categories">Catégorie</label>
+					<select class="optionsFiltre" name="Select-Categories" id="categorie-id">
+						<option value="1">Objets</option>
+						<option value="2">Appartement</option>
+						<option value="3">Hôtels & restaurants</option>
+					</select>
+					<hr>
+					<button class="btn-hover" id="validate-btn">Valider</button>
+				</form>
+
+
+			</div>
+		</div>
+	</div>
+
+
+	<header>
+		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+		<nav>
+			<ul>
+				<li>projets</li>
+				<li>contact</li>
+				<li><a class="display-none" href="./login.html">logout</a></li>
+				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section id="introduction">
+			<figure>
+				<img src="./assets/images/sophie-bluel.png" alt="">
+				<div class="btn-modif">
+					<i class="fa-solid fa-pen-to-square fa-xf"></i>
+					<a class="txt-decoration-none js-modal" href="#modal1">modifier</a>
+				</div>
+
+			</figure>
+			<article>
+				<div class="btn-modif-article">
+					<i class="fa-solid fa-pen-to-square fa-xf"></i>
+					<a class="txt-decoration-none js-modal" href="#modal1">modifier</a>
+				</div>
+				<h2>Designer d'espace</h2>
+				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
+					finale du chantier.</p>
+				<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les
+					couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du
+					chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
+				<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG,
+					décorateur(trice)</p>
+
+			</article>
+		</section>
+		<section id="portfolio">
+			<div class="modif-projet">
+				<h2>Mes Projets</h2>
+
+				<div class="modif-projet-2">
+					<i class="fa-solid fa-pen-to-square fa-xf"></i>
+					<a class="txt-decoration-none js-modal" href="#modal1">modifier</a>
+				</div>
+
+			</div>
+
+
+
+			<div style="display: none;" class="categories"></div>
+			<div class="gallery"></div>
+		</section>
+		<section id="contact">
+			<h2>Contact</h2>
+			<p>Vous avez un projet ? Discutons-en !</p>
+			<form action="#" method="post">
+				<label for="name">Nom</label>
+				<input type="text" name="name" id="name">
+				<label for="email">Email</label>
+				<input type="email" name="email" id="email">
+				<label for="message">Message</label>
+				<textarea name="message" id="message" cols="30" rows="10"></textarea>
+				<input class="input-base" type="submit" value="Envoyer">
+			</form>
+		</section>
+	</main>
+
+	<footer>
+		<nav>
+			<ul>
+				<li>Mentions Légales</li>
+			</ul>
+		</nav>
+	</footer>
+
+	<script src="index.js"></script>
+	<script src="admin.js"></script>
+</body>
+
+</html>
